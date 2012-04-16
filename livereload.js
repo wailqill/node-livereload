@@ -12,15 +12,29 @@
     function Server(config) {
       var _base, _base2, _base3, _base4, _base5, _base6, _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
       this.config = config;
-      (_ref = this.config) != null ? _ref : this.config = {};
-      (_ref2 = (_base = this.config).version) != null ? _ref2 : _base.version = version;
-      (_ref3 = (_base2 = this.config).port) != null ? _ref3 : _base2.port = defaultPort;
-      (_ref4 = (_base3 = this.config).exts) != null ? _ref4 : _base3.exts = [];
-      (_ref5 = (_base4 = this.config).exclusions) != null ? _ref5 : _base4.exclusions = [];
+      if ((_ref = this.config) == null) {
+        this.config = {};
+      }
+      if ((_ref2 = (_base = this.config).version) == null) {
+        _base.version = version;
+      }
+      if ((_ref3 = (_base2 = this.config).port) == null) {
+        _base2.port = defaultPort;
+      }
+      if ((_ref4 = (_base3 = this.config).exts) == null) {
+        _base3.exts = [];
+      }
+      if ((_ref5 = (_base4 = this.config).exclusions) == null) {
+        _base4.exclusions = [];
+      }
       this.config.exts = this.config.exts.concat(defaultExts);
       this.config.exclusions = this.config.exclusions.concat(defaultExclusions);
-      (_ref6 = (_base5 = this.config).applyJSLive) != null ? _ref6 : _base5.applyJSLive = false;
-      (_ref7 = (_base6 = this.config).applyCSSLive) != null ? _ref7 : _base6.applyCSSLive = true;
+      if ((_ref6 = (_base5 = this.config).applyJSLive) == null) {
+        _base5.applyJSLive = false;
+      }
+      if ((_ref7 = (_base6 = this.config).applyCSSLive) == null) {
+        _base6.applyCSSLive = true;
+      }
       this.server = ws.createServer();
       this.server.on('connection', this.onConnection.bind(this));
       this.server.on('close', this.onClose.bind(this));
@@ -58,13 +72,13 @@
               }
             }
             return fs.stat(filename, function(err, stats) {
-              var ext, _i, _len, _results;
+              var ext, _j, _len2, _results;
               if (!err && stats.isDirectory()) {
                 return walk(filename);
               } else {
                 _results = [];
-                for (_i = 0, _len = exts.length; _i < _len; _i++) {
-                  ext = exts[_i];
+                for (_j = 0, _len2 = exts.length; _j < _len2; _j++) {
+                  ext = exts[_j];
                   if (filename.match("\." + ext + "$")) {
                     callback(err, filename);
                     break;
@@ -102,7 +116,7 @@
     };
     Server.prototype.debug = function(str) {
       if (this.config.debug) {
-        return process.binding('stdio').writeError("" + str + "\n");
+        return process.stderr.write("" + str + "\n");
       }
     };
     return Server;

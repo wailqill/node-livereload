@@ -88,7 +88,7 @@ class Server
 
   debug: (str) ->
     if @config.debug
-      process.binding('stdio').writeError "#{str}\n"
+      process.stderr.write "#{str}\n"
 
 exports.createServer = (args...) ->
   server = new Server args...
