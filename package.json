@@ -17,7 +17,7 @@
   }
 , "main": "./livereload.js"
 , "dependencies": {
-    "websocket-server": "https://github.com/VanCoding/node-websocket-server/zipball/master"
+    "websocket-server": "https://github.com/VanCoding/node-websocket-server/tarball/master"
   }
 , "engines" : { "node" : ">=0.2.0" }
 }
